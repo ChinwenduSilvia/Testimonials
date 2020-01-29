@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Testimonials</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="testimonials-container">
+        <i class="fas fa-quote-left"></i>
+        <p class="text"></p>
+        <strong class="name"></strong>
+        <div class="authors-container">
+            <div class="author" selected><img src="https://randomuser.me/api/portraits/women/6.jpg" alt=""></div>
+            <div class="author"><img src="https://randomuser.me/api/portraits/women/22.jpg" alt=""></div>
+            <div class="author"><img src="https://randomuser.me/api/portraits/women/34.jpg" alt=""></div>
+            <div class="author"><img src="https://randomuser.me/api/portraits/women/58.jpg" alt=""></div>
+            <div class="author"><img src="https://randomuser.me/api/portraits/women/75.jpg" alt=""></div>
+        </div>
+    </div>
+</body>
+<script>
+const authorsEl = document.querySelectorAll('.author');
+const container = document.querySelector('.testimonials-container');
+const nameEl = document.querySelector('.name');
+const textEl = document.querySelector('.text');
+
+const testimonials = [{
+    text: 'Chinwendu is a diligent and excellent young lady',
+    name: 'Amanda Brown',
+    color: 'rgba(250, 130, 49, 1.0)'
+}, {
+    text: 'Chinwendu is always delivers with a high level of professionalism',
+    name: 'Mary Gomez',
+    color: 'rgba(235, 59, 90, 1.0)'
+}, {
+    text: 'I will definitely work with her on future projects',
+    name: 'Sandra Jones',
+    color: 'rgba(75, 123, 236, 1.0)'
+}, {
+    text: 'She has excellent communication skills',
+    name: 'Naya Silver',
+    color: 'rgba(165, 94, 234, 1.0)'
+}, {
+    text: 'Chinwendu always delivers promptly on every project assigned to her',
+    name: 'Ruby John',
+    color: 'rgba(32, 191, 107, 1.0)'
+}];
+
+addTestimonial(0);
+
+authorsEl.forEach((author, idx) => {
+	author.addEventListener('click', (e) => {
+		addTestimonial(idx);
+		author.classList.add('selected');
+	})
+});
+
+function addTestimonial(idx) {
+	const testimonial = testimonials[idx];
+	
+	nameEl.innerHTML = testimonial.name;
+	textEl.innerHTML = testimonial.text;
+	container.style.background = testimonial.color;
+	container.style.boxShadow = `0 35px 10px -20px ${testimonial.color.substring(0, testimonial.color.length-4)}0.9)`;
+	
+	authorsEl.forEach(author => {
+		author.classList.remove('selected');
+	});
+}
+
+</script>
+</html>
